@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:loxia="http://loxia.benjamin.cn/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	default-autowire="byName">
+
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"><!-- jedis 连接池基础配置 -->
+		<property name="maxTotal" value="8" /><!-- 连接池中最大实例 数 -->
+		<property name="maxIdle" value="8" /><!-- 连接池中最大闲置实例数 -->
+		<property name="minIdle" value="0" /><!-- 连接池中最小闲置实例数 -->
+		<property name="maxWaitMillis" value="-1" /><!-- 最长等待时间 默认值为-1 
+			单位：毫秒 -->
+	</bean>
+
+	<bean id="jedisPool_0" class="redis.clients.jedis.JedisPool"
+		scope="singleton" destroy-method="destroy">
+		<constructor-arg name="poolConfig">
+			<ref bean="poolConfig" />
+		</constructor-arg>
+		<constructor-arg name="host" value="172.16.1.65" />
+		<constructor-arg name="port" value="6379" />
+		<constructor-arg name="timeout" value="3000" type="int" />
+		<constructor-arg name="password" value="redis" type="String" />
+	</bean>
+
+<!-- 	<bean id="jedisPool_1" class="redis.clients.jedis.JedisPool"
+		scope="singleton" destroy-method="destroy">
+		<constructor-arg name="masterName" value="mymasterdb02" />
+		<constructor-arg name="sentinels">
+			<set>
+				<value>172.16.1.65:26379</value>
+			</set>
+		</constructor-arg>
+		<constructor-arg name="poolConfig">
+			<ref bean="poolConfig" />
+		</constructor-arg>
+		<constructor-arg name="timeout" value="3000" type="int" />
+		<constructor-arg name="password" value="redis" type="String" />
+	</bean> -->
+
+	<bean id="defaultDBRedisModStrategy" class="com.elsa.redis.ModStrategy"><!-- 默认策略，取模策略 -->
+		<property name="prefixMapKey" value="db_redis_cart_"></property><!-- 对应 DBShardJedisPool 
+			类 jedisPoolMap属性的前缀key -->
+		<property name="modValue" value="2"></property><!-- 被 模数的值，2 之后取模得到的值分别 
+			为 0,1 -->
+	</bean>
+
+	<bean id="dbMasterShardJedisPool" class="com.elsa.redis.DBShardJedisPool">
+		<property name="defaultPool"><!-- 默认池 必须配置 -->
+			<ref bean="jedisPool_0" />
+		</property>
+		<property name="jedisPoolMap"><!-- map结构的池 key为 取模后拼接之后的值 ， value为 一个 JedisPool 
+				Bean -->
+			<map>
+				<entry key="db_redis_cart_0" value-ref="jedisPool_0" />
+				<entry key="db_redis_cart_1" value-ref="jedisPool_0" />
+			</map>
+		</property>
+		<property name="strategy"><!-- 使用的策略,可使用自定义策略 -->
+			<ref bean="defaultDBRedisModStrategy" />
+		</property>
+	</bean>
+
+	<bean id="jedisDBUtil" class="com.elsa.redis.util.JedisDBUtil"><!-- JedisDBUtil bean -->
+		<property name="dbMasterShardJedisPool" ref="dbMasterShardJedisPool"></property><!-- 主库线程池 -->
+		<property name="projectPrefixKey" value="config_lhs"></property><!-- 项目前缀，此值会生成在每个key的前面 -->
+	</bean>
+
+</beans>

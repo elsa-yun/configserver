@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--typeAliases>
+		<typeAlias alias="addressDO" type="com.sina.domain.AddressDO" />
+	</typeAliases-->
+	<mappers>
+		<!-- sqlmap xml path config -->
+			<mapper resource="com/elsa/configserver/mybatis/sqlmap/users-mybatis-sqlmap.xml" />
+		<mapper resource="com/elsa/configserver/mybatis/sqlmap/appName-mybatis-sqlmap.xml" />
+		<mapper resource="com/elsa/configserver/mybatis/sqlmap/propConf-mybatis-sqlmap.xml" />
+		<mapper resource="com/elsa/configserver/mybatis/sqlmap/opraterLog-mybatis-sqlmap.xml" />
+	</mappers>
+</configuration>

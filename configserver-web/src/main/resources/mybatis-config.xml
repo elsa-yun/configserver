@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<settings>
+	<setting name="logImpl" value="org.apache.ibatis.logging.log4j.Log4jImpl"/>
+</settings>
+	<mappers>
+		<mapper
+			resource="sqlMap/city-mybatis-sqlmap.xml" />
+		<mapper
+			resource="sqlMap/users-mybatis-sqlmap.xml" />
+		<mapper
+			resource="sqlMap/appName-mybatis-sqlmap.xml" />
+		<mapper
+			resource="sqlMap/propConf-mybatis-sqlmap.xml" />
+		<mapper
+			resource="sqlMap/opraterLog-mybatis-sqlmap.xml" />
+		<mapper
+			resource="sqlMap/appFileName-mybatis-sqlmap.xml" />
+	</mappers>
+</configuration>

@@ -1,0 +1,8 @@
+@charset "utf-8";/* CSS Document */
+body{margin:0px;}
+.top{width:100%;height:72px;background:url(../images/logo_bg.png);}
+.left_top{width:244px;height:72px;background:url(../images/logo_right.gif);float:left;}
+.center_top{width:auto;height:72px;float:left;background:url(../images/logo_bg.gif);}
+.right_top{float:right;background:url(../images/logo_right.gif);width:280px;height:72px;}
+.main_iframe{ margin-left:0px;margin-top:6px;z-index:1;}
+.guide{margin:0;padding:0;height:30px;font-family:"宋体";font-size:12px;line-height:30px;width:100%;padding-left:10px;color:#002D61;background:url(../images/guide_bg.png)}

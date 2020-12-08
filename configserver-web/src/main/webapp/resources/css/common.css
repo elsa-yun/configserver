@@ -1,0 +1,68 @@
+@charset "utf-8";/* CSS Document By Hoogle 2010*/
+/*搜索条件table样式开始*/
+body{margin:0 auto;text-align:center}
+html{overflow-x:hidden;overflow-y:auto;border:0;}
+/*a的样式*/
+a:link,a:visited{text-decoration:none;;color:#006;}
+a:hover{text-decoration:none;color:#cc0000;}
+#nihao a{color:#FCFF01;}
+/*td的样式开始*/
+td{font-size:12px;}
+/*td的样式结束*/
+.add_table{width:98%;*width:98%;padding:0;border:solid #74A6BD;border-width:0px;margin:3px auto;background-color:#fff;border-collapse:collapse;}
+.add_table tr{border:solid #74A6BD;border-width:0;font-family:宋体;font-size:12px;text-align:center;border-collapse:collapse;}
+.add_table th,#add_table th{font: bold 12px "宋体";color:#000000;border:0;letter-spacing:2px;text-transform:uppercase;padding:6px 2px 6px 2px;margin:0 auto;border-collapse:collapse;}
+.add_table td{border:1px solid #74A6BD;font-size:12px;padding-left:4px;height:27px;line-height:27px;border-collapse:collapse;}
+.addtable_left{width:12%;background:#D6F1FD;font-family:"宋体";font-size:12px;font-weight:bold;text-align:right;color:#002D61;padding-right:5px;border-collapse:collapse;height:27px;line-height:27px;}
+/*列表页删除选中 添加列表*/
+.do{width:98%;*width:99%;height:30px;line-height:30px;margin:0;margin-top:10px;text-align:left;}
+.do a{font-family:"宋体";font-size:12px;text-align:left;}
+/*搜索条件table样式结束*/
+/*编辑页table样式开始*/
+.edit_table{width:98%;padding:0;margin:0 auto;border:solid #74A6BD 1px;margin-top:3px;background-color:#fff;border-collapse:collapse;margin-top:8px;}
+.edit_table tr{width:998px;border:solid #EDF6FA;border-width:0 1px 0px 0;font-family:宋体;font-size:12px;text-align:center;border-collapse:collapse;}
+.edit_table th,#add_table th{width:998px;height:23px;line-height:23px;font: 12px "sans-serif","Arial","宋体","Verdana";color:#002D61;border:1px solid #88B3C7;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:6px 2px 6px 2px;background:#D6F1FD;margin:0 auto;border-collapse:collapse;}
+.edit_table td{border:1px solid #6795B4;font-size:12px;padding-left:4px;height:23px;line-height:23px;border-collapse:collapse;color:#002D61;font:12px "sans-serif","Arial","Verdana"}
+
+.edit_table_login{width:300px;padding:0;margin:0 auto;border:solid #74A6BD 1px;margin-top:3px;background-color:#fff;border-collapse:collapse;margin-top:8px;}
+.edit_table_login tr{width:998px;border:solid #EDF6FA;border-width:0 1px 0px 0;font-family:宋体;font-size:12px;text-align:center;border-collapse:collapse;}
+.edit_table_login th,#add_table th{width:998px;height:23px;line-height:23px;font: 12px "sans-serif","Arial","宋体","Verdana";color:#002D61;border:1px solid #88B3C7;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:6px 2px 6px 2px;background:#D6F1FD;margin:0 auto;border-collapse:collapse;}
+.edit_table_login td{border:1px solid #6795B4;font-size:12px;padding-left:4px;height:23px;line-height:23px;border-collapse:collapse;color:#002D61;font:12px "sans-serif","Arial","Verdana"}
+/*编辑页table样式结束*/
+/*编辑页body开始*/
+.ContentBody{width:100%;margin:3px auto;}
+/*编辑页body结束*/
+.MenuIcon{margin:1px 6px -12px 12px;}
+/*列表第一行开始*/
+.CTitle{padding:5px;text-align:center;color:#FFFFFF;font-size:13px;font-family:"宋体";}
+/*列表第一行结束*/
+/*修改页table样式*/
+.CContent{width:98%;border-top:1px solid #5F8FB0;border-right:1px solid #5F8FB0;border-bottom:1px solid #5F8FB0;border-left:1px solid #5F8FB0;background-color:#FFFFFF;margin:0 auto;}
+.CPanel{padding:5px;font-size:12px;font-family:Verdana,Arial,Helvetica,sans-serif;}
+select{font-size:12px;bolder:1px solid #6E848E;}
+input.text{border:1px solid #6E848E;font-size:12px;font-family:Verdana,Arial,Helvetica,sans-serif;height:20px;line-height:20px;}
+button{background:#fff;border:1px solid #C28F27;padding:2px 2px 0px 2px;margin:4px;border-width:1px 3px 1px 3px;font-size:12px;color:#A74300;}
+input.button{background:#fff;border:1px solid #C28F27;padding:2px 2px 0px 2px;margin:4px;border-width:1px 3px 1px 3px;font-size:12px;color:#A74300;}
+textarea{border:1px solid #7F9DB9;font-size:12px;font-family:Verdana,Arial,Helvetica,sans-serif;}
+.SubMenu{padding:4px;border-bottom:1px solid #5F8FB0;margin:-5px -5px 2px -5px;background-color:#EBF1F5;}
+.SubButton{margin-top:6px;padding:4px;text-align:center;}
+/*按钮样式开始*/
+.right-button02{font-family:"宋体";font-size:12px;color:#fff;height:22px;width:70px;background:url(../images/button02.jpg) no-repeat;cursor:pointer;border:none;}
+.right-button04{font-family:"宋体";font-size:12px;color:#fff;height:22px;width:70px;background:url(../images/button04.jpg) no-repeat;cursor:pointer;border:none;}
+.right-buttonzibiao{font-family:"宋体";font-size:12px;color:#0A3669;height:20px;width:48px;position:absolute;right:10px;top:2px;cursor:pointer;background-image:url(../images/btnzi.gif);border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;}
+.button02{font-family:"宋体";font-size:12px;color:#0A3669;height:20px;width:48px;background-image:url(../images/btn2.gif);cursor:pointer;border:none;position:absolute;right:10px;top:2px;}
+.button04{font-family:"宋体";font-size:12px;color:#0A3669;height:20px;width:70px;background-image:url(../images/btn4.gif);cursor:pointer;border:none;position:absolute;right:10px;top:2px;}
+/*编辑也单元格*/
+.tdleft{width:15%;background:#D6F1FD;font-family:"宋体";font-size:12px;font-weight:bold;text-align:center;color:#002D61;padding-right:5px;}
+.tdright{text-align:left;width:35%;}
+.tdleftOne{width:14%;background:#D6F1FD;font-family:"宋体";font-size:12px;font-weight:bold;text-align:center;color:#002D61;padding-right:5px;}
+.tdrightOne{text-align:left;width:86%;}
+/*靠左和靠右*/
+.leftTD{text-align:left;}
+.rightTD{text-align:right;}
+/* 输入控件验证出错*/
+form input.error{border:solid 1px red;}
+/* 验证错误提示信息*/
+form label.error{width:200px;margin-left:10px;color:Red;}
+.page{width:98%;text-align:left;margin:0 auto;}
+.red{ color:red;}

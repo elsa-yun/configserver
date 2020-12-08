@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.elsa.configserver.domain.AppFileNameMapper">
+
+	<resultMap type="com.elsa.configserver.domain.AppFileNameDO"
+		id="AppFileNameDOResultMap">
+		<id column="id" property="id" />
+		<result column="app_id" property="appId" />
+		<result column="prop_file_name" property="propFileName" />
+		<result column="is_delete" property="isDelete" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="modifyTime" />
+	</resultMap>
+
+	<sql id="MybatisAppFileNameDAO_all_column_fields">
+		id,app_id,prop_file_name,is_delete,create_time,modify_time
+	</sql>
+	<!-- 只有varchar char text类型 做 !='' 判断，生成代码时,其他类型时只做!=null 决断 0或fasle与空''是相同的，在mybatis中的动态语句中 -->
+	<sql id="MybatisAppFileNameDAO_dynamic_where_fields"><!-- xml转义字符需要 <![CDATA[ ]]> 标签 -->
+		<where>
+			<if test="appId != null  and appId != '' "> AND app_id=#{appId} </if>
+			<if test="propFileName != null  and propFileName != '' "> AND prop_file_name=#{propFileName} </if>
+			<if test="isDelete != null "> AND is_delete=#{isDelete} </if>
+		</where>
+	</sql>
+
+	<select id="MybatisAppFileNameDAO_selectById" parameterType="long"
+		resultMap="AppFileNameDOResultMap">
+		SELECT
+		<include refid="MybatisAppFileNameDAO_all_column_fields" />
+		FROM
+		cf_app_file_name
+		WHERE
+		id = #{id}
+	</select>
+
+	<insert id="MybatisAppFileNameDAO_insert" parameterType="com.elsa.configserver.domain.AppFileNameDO"
+		useGeneratedKeys="true">
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID() AS id
+		</selectKey>
+		INSERT INTO cf_app_file_name(
+		id,
+		app_id,
+		prop_file_name,
+		is_delete,
+		create_time,
+		modify_time
+		)values(
+		#{id},
+		#{appId},
+		#{propFileName},
+		#{isDelete},
+		#{createTime},
+		#{modifyTime}
+		)
+	</insert>
+
+	<update id="MybatisAppFileNameDAO_updateById" parameterType="com.elsa.configserver.domain.AppFileNameDO">
+		UPDATE cf_app_file_name
+		SET
+		app_id = #{appId},
+		prop_file_name =
+		#{propFileName},
+		is_delete = #{isDelete},
+		modify_time = #{modifyTime}
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="MybatisAppFileNameDAO_deleteById" parameterType="long">
+		DELETE FROM cf_app_file_name WHERE id = #{id}
+	</delete>
+
+	<update id="MybatisAppFileNameDAO_update_dynamic" parameterType="com.elsa.configserver.domain.AppFileNameDO">
+		UPDATE cf_app_file_name
+		<set>
+			<if test="appId != null  and appId != '' ">app_id=#{appId},</if>
+			<if test="propFileName != null  and propFileName != '' ">prop_file_name=#{propFileName},</if>
+			<if test="isDelete != null ">is_delete=#{isDelete},</if>
+			<if test="modifyTime != null ">modify_time=#{modifyTime},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<select id="MybatisAppFileNameDAO_select_dynamic" resultMap="AppFileNameDOResultMap"
+		parameterType="com.elsa.configserver.domain.AppFileNameDO">
+		SELECT
+		<include refid="MybatisAppFileNameDAO_all_column_fields" />
+		FROM
+		cf_app_file_name
+		<include refid="MybatisAppFileNameDAO_dynamic_where_fields" />
+	</select>
+
+	<select id="MybatisAppFileNameDAO_select_dynamic_count"
+		resultType="long" parameterType="com.elsa.configserver.domain.AppFileNameDO">
+		SELECT
+		count(1)
+		FROM
+		cf_app_file_name
+		<include refid="MybatisAppFileNameDAO_dynamic_where_fields" />
+	</select>
+
+	<select id="MybatisAppFileNameDAO_select_dynamic_page_query"
+		resultMap="AppFileNameDOResultMap" parameterType="com.elsa.configserver.domain.AppFileNameDO">
+		SELECT
+		<include refid="MybatisAppFileNameDAO_all_column_fields" />
+		FROM
+		cf_app_file_name
+		<include refid="MybatisAppFileNameDAO_dynamic_where_fields" />
+		Limit #{start},#{pageSize}
+	</select>
+
+
+	<select id="MybatisAppFileNameDAO_select_by_app_ids" resultMap="AppFileNameDOResultMap">
+		select
+		<include refid="MybatisAppFileNameDAO_all_column_fields" />
+		from cf_app_file_name where app_id in
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+</mapper>

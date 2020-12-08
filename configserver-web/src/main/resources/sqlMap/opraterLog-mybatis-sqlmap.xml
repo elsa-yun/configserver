@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.elsa.configserver.domain.OpraterLogMapper">
+
+	<resultMap type="com.elsa.configserver.domain.OpraterLogDO" id="OpraterLogDOResultMap">
+		<id column="id" property="id" />
+        <result column="app_id" property="appId"/>
+        <result column="app_file_id" property="appFileId"/>
+        <result column="before_content" property="beforeContent"/>
+        <result column="operator" property="operator"/>
+        <result column="environment" property="environment"/>
+        <result column="type" property="type"/>
+        <result column="create_time" property="createTime"/>
+        <result column="after_content" property="afterContent"/>
+        <result column="prop_conf_id" property="propConfId"/>
+	</resultMap>
+
+	<sql id="MybatisOpraterLogDAO_all_column_fields">
+	      id,app_id,before_content,operator,environment,type,create_time,after_content,prop_conf_id
+ 	</sql>
+	<!-- 只有varchar char text类型 做 !='' 判断，生成代码时,其他类型时只做!=null 决断 0或fasle与空''是相同的，在mybatis中的动态语句中 -->
+	<sql id="MybatisOpraterLogDAO_dynamic_where_fields"><!-- xml转义字符需要 <![CDATA[   ]]> 标签-->
+		<where>
+			<if test="propConfId != null  "> AND prop_conf_id=#{propConfId} </if>
+			<if test="type != null  and type != '' "> AND type=#{type} </if>
+			<if test="appId != null "> AND app_id=#{appId} </if>
+			<if test="beforeContent != null  and beforeContent != '' "> AND before_content=#{beforeContent} </if>
+			<if test="operator != null  and operator != '' "> AND operator=#{operator} </if>
+			<if test="environment != null  and environment != '' "> AND environment=#{environment} </if>
+			<if test="afterContent != null  and afterContent != '' "> AND after_content=#{afterContent} </if>
+		</where>
+ 	</sql>
+
+	<select id="MybatisOpraterLogDAO_selectById" parameterType="long" resultMap="OpraterLogDOResultMap">
+	SELECT
+		<include refid="MybatisOpraterLogDAO_all_column_fields" />
+	FROM
+		cf_oprater_log
+	WHERE
+		 id = #{id}
+	</select>
+
+    <insert id="MybatisOpraterLogDAO_insert" parameterType="com.elsa.configserver.domain.OpraterLogDO" useGeneratedKeys="true">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO cf_oprater_log(
+				id,
+				app_id,
+				app_file_id,
+				before_content,
+				operator,
+				environment,
+				type,
+				create_time,
+				after_content,
+				prop_conf_id
+		)values(
+				#{id},
+				#{appId},
+				#{appFileId},
+				#{beforeContent},
+				#{operator},
+				#{environment},
+				#{type},
+				#{createTime},
+				#{afterContent},
+				#{propConfId}
+		)
+    </insert>
+
+	<update id="MybatisOpraterLogDAO_updateById" parameterType="com.elsa.configserver.domain.OpraterLogDO">
+		UPDATE cf_oprater_log
+		SET
+					app_id = #{appId},
+					before_content = #{beforeContent},
+					operator = #{operator},
+					environment = #{environment},
+					type = #{type},
+					after_content = #{afterContent},
+					prop_conf_id=#{propConfId}
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="MybatisOpraterLogDAO_deleteById" parameterType="long">
+		DELETE FROM cf_oprater_log WHERE id = #{id}
+	</delete>
+
+	<update id="MybatisOpraterLogDAO_update_dynamic" parameterType="com.elsa.configserver.domain.OpraterLogDO">
+		UPDATE cf_oprater_log
+		<set>
+					<if test="appId != null ">app_id=#{appId},</if>
+					<if test="beforeContent != null  and beforeContent != '' ">before_content=#{beforeContent},</if>
+					<if test="operator != null  and operator != '' ">operator=#{operator},</if>
+					<if test="environment != null  and environment != '' ">environment=#{environment},</if>
+					<if test="type != null  and type != '' ">type=#{type},</if>
+					<if test="afterContent != null  and afterContent != '' ">after_content=#{afterContent},</if>
+					<if test="propConfId != null ">prop_conf_id=#{propConfId},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+ 	<select id="MybatisOpraterLogDAO_select_dynamic" resultMap="OpraterLogDOResultMap" parameterType="com.elsa.configserver.domain.OpraterLogDO">
+	     SELECT
+	     	<include refid="MybatisOpraterLogDAO_all_column_fields" />
+		 FROM
+		 	cf_oprater_log
+			<include refid="MybatisOpraterLogDAO_dynamic_where_fields" />
+			order by id desc
+ 	</select>
+
+ 	<select id="MybatisOpraterLogDAO_select_dynamic_count" resultType="long" parameterType="com.elsa.configserver.domain.OpraterLogDO">
+	     SELECT
+	     	count(1)
+		 FROM
+		 	cf_oprater_log
+	 	<include refid="MybatisOpraterLogDAO_dynamic_where_fields" />
+ 	</select>
+
+ 	<select id="MybatisOpraterLogDAO_select_dynamic_page_query" resultMap="OpraterLogDOResultMap" parameterType="com.elsa.configserver.domain.OpraterLogDO">
+	     SELECT
+	     	<include refid="MybatisOpraterLogDAO_all_column_fields" />
+		 FROM
+		 	cf_oprater_log
+	 	<include refid="MybatisOpraterLogDAO_dynamic_where_fields" />
+	 	Limit #{start},#{pageSize}
+ 	</select>
+
+</mapper>

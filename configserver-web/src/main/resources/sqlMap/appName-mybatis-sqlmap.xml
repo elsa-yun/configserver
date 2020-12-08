@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.elsa.configserver.domain.AppNameMapper">
+
+	<resultMap type="com.elsa.configserver.domain.AppNameDO" id="AppNameDOResultMap">
+		<id column="id" property="id" />
+        <result column="app_name" property="appName"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+	</resultMap>
+
+	<sql id="MybatisAppNameDAO_all_column_fields">
+	      id,app_name,is_delete,create_time,modify_time
+ 	</sql>
+	<!-- 只有varchar char text类型 做 !='' 判断，生成代码时,其他类型时只做!=null 决断 0或fasle与空''是相同的，在mybatis中的动态语句中 -->
+	<sql id="MybatisAppNameDAO_dynamic_where_fields"><!-- xml转义字符需要 <![CDATA[   ]]> 标签-->
+		<where>
+			<if test="appName != null  and appName != '' "> AND app_name=#{appName} </if>
+			<if test="isDelete != null "> AND is_delete=#{isDelete} </if>
+		</where>
+ 	</sql>
+
+	<select id="MybatisAppNameDAO_selectById" parameterType="long" resultMap="AppNameDOResultMap">
+	SELECT
+		<include refid="MybatisAppNameDAO_all_column_fields" />
+	FROM
+		cf_app_name
+	WHERE
+		 id = #{id}
+	</select>
+
+    <insert id="MybatisAppNameDAO_insert" parameterType="com.elsa.configserver.domain.AppNameDO" useGeneratedKeys="true">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO cf_app_name(
+				id,
+				app_name,
+				is_delete,
+				create_time,
+				modify_time
+		)values(
+				#{id},
+				#{appName},
+				#{isDelete},
+				#{createTime},
+				#{modifyTime}
+		)
+    </insert>
+
+	<update id="MybatisAppNameDAO_updateById" parameterType="com.elsa.configserver.domain.AppNameDO">
+		UPDATE cf_app_name
+		SET
+					app_name = #{appName},
+					is_delete = #{isDelete},
+					modify_time = #{modifyTime}
+		WHERE
+			id = #{id} 
+	</update>
+
+	<delete id="MybatisAppNameDAO_deleteById" parameterType="long">
+		DELETE FROM cf_app_name WHERE id = #{id}
+	</delete>
+
+	<update id="MybatisAppNameDAO_update_dynamic" parameterType="com.elsa.configserver.domain.AppNameDO">
+		UPDATE cf_app_name
+		<set>
+					<if test="appName != null  and appName != '' ">app_name=#{appName},</if>
+					<if test="isDelete != null ">is_delete=#{isDelete},</if>
+					<if test="modifyTime != null ">modify_time=#{modifyTime},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+ 	<select id="MybatisAppNameDAO_select_dynamic" resultMap="AppNameDOResultMap" parameterType="com.elsa.configserver.domain.AppNameDO">
+	     SELECT
+	     	<include refid="MybatisAppNameDAO_all_column_fields" />
+		 FROM
+		 	cf_app_name
+			<include refid="MybatisAppNameDAO_dynamic_where_fields" />
+ 	</select>
+
+ 	<select id="MybatisAppNameDAO_select_dynamic_count" resultType="long" parameterType="com.elsa.configserver.domain.AppNameDO">
+	     SELECT
+	     	count(1)
+		 FROM
+		 	cf_app_name
+	 	<include refid="MybatisAppNameDAO_dynamic_where_fields" />
+ 	</select>
+
+ 	<select id="MybatisAppNameDAO_select_dynamic_page_query" resultMap="AppNameDOResultMap" parameterType="com.elsa.configserver.domain.AppNameDO">
+	     SELECT
+	     	<include refid="MybatisAppNameDAO_all_column_fields" />
+		 FROM
+		 	cf_app_name
+	 	<include refid="MybatisAppNameDAO_dynamic_where_fields" />
+	 	Limit #{start},#{pageSize}
+ 	</select>
+
+</mapper>

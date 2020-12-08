@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.elsa.configserver.domain.PropConfMapper">
+
+	<resultMap type="com.elsa.configserver.domain.PropConfDO" id="PropConfDOResultMap">
+		<id column="id" property="id" />
+        <result column="app_file_id" property="appFileId"/>
+        <result column="app_id" property="appId"/>
+        <result column="actual_use" property="actualUse"/>
+        <result column="content" property="content"/>
+        <result column="status" property="status"/>
+        <result column="environment" property="environment"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="item_modify_time" property="itemModifyTime"/>
+	</resultMap>
+
+	<sql id="MybatisPropConfDAO_all_column_fields">
+	      id,app_file_id,app_id,actual_use,content,status,environment,user_id,create_time,modify_time,item_modify_time
+ 	</sql>
+	<!-- 只有varchar char text类型 做 !='' 判断，生成代码时,其他类型时只做!=null 决断 0或fasle与空''是相同的，在mybatis中的动态语句中 -->
+	<sql id="MybatisPropConfDAO_dynamic_where_fields"><!-- xml转义字符需要 <![CDATA[   ]]> 标签-->
+		<where>
+			<if test="appId != null "> AND app_id=#{appId} </if>
+			<if test="appFileId != null "> AND app_file_id=#{appFileId} </if>
+			<if test="actualUse != null "> AND actual_use=#{actualUse} </if>
+			<if test="content != null  and content != '' "> AND content=#{content} </if>
+			<if test="status != null "> AND status=#{status} </if>
+			<if test="environment != null  and environment != '' "> AND environment=#{environment} </if>
+			<if test="userId != null "> AND user_id=#{userId} </if>
+		</where>
+ 	</sql>
+
+	<select id="MybatisPropConfDAO_selectById" parameterType="long" resultMap="PropConfDOResultMap">
+	SELECT
+		<include refid="MybatisPropConfDAO_all_column_fields" />
+	FROM
+		cf_prop_conf
+	WHERE
+		 id = #{id}
+	</select>
+
+    <insert id="MybatisPropConfDAO_insert" parameterType="com.elsa.configserver.domain.PropConfDO" useGeneratedKeys="true">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO cf_prop_conf(
+				id,
+				app_file_id,
+				app_id,
+				actual_use,
+				content,
+				status,
+				environment,
+				user_id,
+				create_time,
+				modify_time,
+				item_modify_time
+		)values(
+				#{id},
+				#{appFileId},
+				#{appId},
+				#{actualUse},
+				#{content},
+				#{status},
+				#{environment},
+				#{userId},
+				#{createTime},
+				#{modifyTime},
+				#{itemModifyTime}
+		)
+    </insert>
+
+	<update id="MybatisPropConfDAO_updateById" parameterType="com.elsa.configserver.domain.PropConfDO">
+		UPDATE cf_prop_conf
+		SET
+					app_file_id = #{appFileId},
+					app_id = #{appId},
+					actual_use = #{actualUse},
+					content = #{content},
+					status = #{status},
+					environment = #{environment},
+					user_id = #{userId},
+					modify_time = #{modifyTime},
+					item_modify_time = #{itemModifyTime}
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="MybatisPropConfDAO_deleteById" parameterType="long">
+		DELETE FROM cf_prop_conf WHERE id = #{id}
+	</delete>
+
+	<update id="MybatisPropConfDAO_update_dynamic" parameterType="com.elsa.configserver.domain.PropConfDO">
+		UPDATE cf_prop_conf
+		<set>
+					<if test="appFileId != null ">app_file_id=#{appFileId},</if>
+					<if test="appId != null ">app_id=#{appId},</if>
+					<if test="actualUse != null ">actual_use=#{actualUse},</if>
+					<if test="content != null  and content != '' ">content=#{content},</if>
+					<if test="status != null ">status=#{status},</if>
+					<if test="environment != null  and environment != '' ">environment=#{environment},</if>
+					<if test="userId != null ">user_id=#{userId},</if>
+					<if test="modifyTime != null ">modify_time=#{modifyTime},</if>
+					<if test="itemModifyTime != null ">item_modify_time=#{itemModifyTime},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+ 	<select id="MybatisPropConfDAO_select_dynamic" resultMap="PropConfDOResultMap" parameterType="com.elsa.configserver.domain.PropConfDO">
+	     SELECT
+	     	<include refid="MybatisPropConfDAO_all_column_fields" />
+		 FROM
+		 	cf_prop_conf
+			<include refid="MybatisPropConfDAO_dynamic_where_fields" />
+			order by modify_time asc
+ 	</select>
+
+ 	<select id="MybatisPropConfDAO_select_dynamic_count" resultType="long" parameterType="com.elsa.configserver.domain.PropConfDO">
+	     SELECT
+	     	count(1)
+		 FROM
+		 	cf_prop_conf
+	 	<include refid="MybatisPropConfDAO_dynamic_where_fields" />
+ 	</select>
+
+ 	<select id="MybatisPropConfDAO_select_dynamic_page_query" resultMap="PropConfDOResultMap" parameterType="com.elsa.configserver.domain.PropConfDO">
+	     SELECT
+	     	<include refid="MybatisPropConfDAO_all_column_fields" />
+		 FROM
+		 	cf_prop_conf
+	 	<include refid="MybatisPropConfDAO_dynamic_where_fields" />
+	 	Limit #{start},#{pageSize}
+ 	</select>
+ 	
+ 	
+ 	<select id="MybatisPropConfDAO_select_one_with_propconf" resultMap="PropConfDOResultMap" parameterType="com.elsa.configserver.domain.PropConfDO">
+	     SELECT
+	     	<include refid="MybatisPropConfDAO_all_column_fields" />
+		 FROM
+		 	cf_prop_conf
+	 	where
+			 app_file_id=#{appFileId} AND app_id=#{appId}  AND status=#{status}  AND environment=#{environment} order by modify_time desc limit 1
+ 	</select>
+
+</mapper>

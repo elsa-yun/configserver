@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean class="com.taobao.session.config.SpringConfigFactory">
+		<property name="defaultConfig">
+			<props>
+				<prop key="storeKey">cookie</prop>
+				<prop key="lifeCycle">-1</prop>
+				<prop key="domain">.daily.taobao.net</prop>
+			</props>
+		</property>
+		<property name="combineKeyConfig">
+			<list>
+				<props>
+					<prop key="compressKey">uc1</prop>
+					<prop key="lifeCycle">-1</prop>
+					<prop key="domain">.daily.taobao.net</prop>
+				</props>
+				<props>
+					<prop key="compressKey">cart</prop>
+					<prop key="lifeCycle">307586400</prop>
+					<prop key="domain">.daily.taobao.net</prop>
+					<prop key="httpOnly">false</prop>
+				</props>
+			</list>
+		</property>
+
+		<property name="properties">
+			<list>
+				<props>
+					<prop key="blowfish.cipherKey">taobao123</prop>
+					<prop key="tair.configServers">192.168.212.95:5198</prop>
+					<prop key="tair.groupName">group_1</prop>
+					<prop key="tair.namespace">6238</prop>
+
+					<prop key="tair2.configServers">192.168.212.95:5198</prop>
+					<prop key="tair2.groupName">group_1</prop>
+					<prop key="tair2.namespace">6238</prop>
+
+					<prop key="tair.resetErrorCount"></prop>
+					<prop key="version">0</prop>
+				</props>
+			</list>
+		</property>
+		<property name="configEntries">
+			<list>
+				<props>
+					<prop key="key">_tb_token_</prop>
+					<prop key="nickKey">_tb_token_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="httpOnly">true</prop>
+				</props>
+				<props>
+					<prop key="key">_l_g_</prop>
+					<prop key="nickKey">_l_g_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+					<prop key="httpOnly">false</prop>
+				</props>
+				<props>
+					<prop key="key">userID</prop>
+					<prop key="nickKey">cookie1</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+					<prop key="httpOnly">true</prop>
+				</props>
+<!-- 				<props>
+					<prop key="key">sessionID</prop>
+					<prop key="nickKey">cookie2</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="httpOnly">true</prop>
+				</props> -->
+				<props>
+					<prop key="key">_nk_</prop>
+					<prop key="escapeJava">true</prop>
+					<prop key="nickKey">_nk_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="httpOnly">false</prop>
+				</props>
+				<props>
+					<prop key="key">tg</prop>
+					<prop key="nickKey">tg</prop>
+					<prop key="lifeCycle">54000000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">service_type</prop>
+					<prop key="nickKey">_sv_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">yahoobinding</prop>
+					<prop key="nickKey">_yb_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+
+				<props>
+					<prop key="key">ypid</prop>
+					<prop key="nickKey">_ypid_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">ymc</prop>
+					<prop key="nickKey">_ymc_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">regtime</prop>
+					<prop key="nickKey">_rt_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_mgp_</prop>
+					<prop key="nickKey">_mgp_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_mm_</prop>
+					<prop key="nickKey">_mm_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<!-- add by luohan -->
+				<props>
+					<prop key="key">ncount</prop>
+					<prop key="nickKey">ncount</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">scount</prop>
+					<prop key="nickKey">scount</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+
+				<!-- add by luohan edd -->
+				<props>
+					<prop key="key">_msg_</prop>
+					<prop key="nickKey">_msg_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_msg_voice</prop>
+					<prop key="nickKey">_msg_v</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_auth_am_</prop>
+					<prop key="nickKey">_auth_am_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_auth_ad_</prop>
+					<prop key="nickKey">_auth_ad_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">promoted_type</prop>
+					<prop key="nickKey">cookie21</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compress">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_cc_</prop>
+					<prop key="nickKey">_cc_</prop>
+					<prop key="lifeCycle">31536000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">lastVisitCookie</prop>
+					<prop key="nickKey">cookie14</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">login</prop>
+					<prop key="nickKey">cookie15</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">role</prop>
+					<prop key="nickKey">cookie16</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">userIDNum</prop>
+					<prop key="nickKey">cookie17</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+					<prop key="httpOnly">true</prop>
+				</props>
+				<props>
+					<prop key="key">publishItemObj</prop>
+					<prop key="nickKey">publishItemObj</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">publishObj</prop>
+					<prop key="nickKey">po</prop>
+					<prop key="path">/auction/publish/</prop>
+					<prop key="lifeCycle">357584000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="version">0</prop>
+				</props>
+				<props>
+					<prop key="key">wwwtaobaocom_auction_data</prop>
+					<prop key="nickKey">wd</prop>
+					<prop key="lifeCycle">357584000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">existShop</prop>
+					<prop key="nickKey">existShop</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">existXShop</prop>
+					<prop key="nickKey">existXShop</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">isWuiShop</prop>
+					<prop key="nickKey">isWuiShop</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">enabledWuiShop</prop>
+					<prop key="nickKey">enabledWuiShop</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">userFrom</prop>
+					<prop key="nickKey">wwwtaobaocom_user_from</prop>
+					<prop key="lifeCycle">864000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_wwmsg_</prop>
+					<prop key="nickKey">_wwmsg_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">lastgetwwmsg</prop>
+					<prop key="nickKey">lastgetwwmsg</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">tracknick</prop>
+					<prop key="nickKey">tracknick</prop>
+					<prop key="lifeCycle">31536000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">unact</prop>
+					<prop key="nickKey">unact</prop>
+					<prop key="lifeCycle">86400</prop>
+					<prop key="path">/member/</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">reglist</prop>
+					<prop key="nickKey">rl</prop>
+					<prop key="lifeCycle">86400</prop>
+					<prop key="path">/member/</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">ademail</prop>
+					<prop key="nickKey">ademail</prop>
+					<prop key="lifeCycle">86400</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">buyitemid</prop>
+					<prop key="nickKey">buyid</prop>
+					<prop key="lifeCycle">86400</prop>
+					<prop key="path">/member/</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_ad_</prop>
+					<prop key="nickKey">_ad_</prop>
+					<prop key="lifeCycle">307586400</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">caid</prop>
+					<prop key="nickKey">caid</prop>
+					<prop key="path">/</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">ssllogin</prop>
+					<prop key="nickKey">ssllogin</prop>
+					<prop key="lifeCycle">31536000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_lang</prop>
+					<prop key="nickKey">_lang</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_show_</prop>
+					<prop key="nickKey">_show_</prop>
+					<prop key="path">/mytaobao/alps/</prop>
+					<prop key="lifeCycle">357584000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_oc_</prop>
+					<prop key="nickKey">_oc_</prop>
+					<prop key="path">/mytaobao/alps/</prop>
+					<prop key="lifeCycle">357584000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">_isbuyer_</prop>
+					<prop key="nickKey">_isbuyer_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">lastLoginTime</prop>
+					<prop key="nickKey">lltime</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<props>
+					<prop key="key">trackid</prop>
+					<prop key="nickKey">t</prop>
+					<prop key="lifeCycle">307586400</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">is_guest_login</prop>
+					<prop key="nickKey">isg</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">newtrace</prop>
+					<prop key="nickKey">nt</prop>
+					<prop key="path">/member</prop>
+					<prop key="lifeCycle">357584000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">allyes_chsess</prop>
+					<prop key="nickKey">allyes_chsess</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="lifeCycle">1800</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">miid</prop>
+					<prop key="nickKey">miid</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">zfbcertificateduser</prop>
+					<prop key="nickKey">zfbcertificateduser</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="lifeCycle">300</prop>
+				</props>
+				<props>
+					<prop key="key">action_type</prop>
+					<prop key="nickKey">action_type</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">expressway_game</prop>
+					<prop key="nickKey">expressway_game</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">expressway_mobile</prop>
+					<prop key="nickKey">expressway_mobile</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">expressway_life</prop>
+					<prop key="nickKey">expressway_life</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">expressway_search</prop>
+					<prop key="nickKey">expressway_search</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">_reg_rand_name_</prop>
+					<prop key="nickKey">_reg_name_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="lifeCycle">1800</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_reg_encrypt_table_</prop>
+					<prop key="nickKey">_reg_table_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="lifeCycle">1800</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">_reg_time_check_</prop>
+					<prop key="nickKey">_reg_first_time_date</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="lifeCycle">1800</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">btc</prop>
+					<prop key="nickKey">btc</prop>
+					<prop key="lifeCycle">31536000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">batchbuy</prop>
+					<prop key="nickKey">batchbuy</prop>
+					<prop key="lifeCycle">7776000</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+				</props>
+				<props>
+					<prop key="key">_web_flow_state_</prop>
+					<prop key="nickKey">_web_flow_state_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="lifeCycle">86400</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">dynamic_login</prop>
+					<prop key="nickKey">dynamic_login</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="lifeCycle">31536000</prop>
+					<prop key="domain">member1.daily.taobao.net</prop>
+					<prop key="path">/member/</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">ssl_dynamic_login</prop>
+					<prop key="nickKey">ssl_dynamic_login</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="lifeCycle">31536000</prop>
+					<prop key="path">/member/</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">cart_merge</prop>
+					<prop key="nickKey">cart_m</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+
+				<props>
+					<prop key="key">cart_items</prop>
+					<prop key="nickKey">cart_i</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">cart</prop>
+				</props>
+				<props>
+					<prop key="key">cart_price</prop>
+					<prop key="nickKey">cart_p</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">cart</prop>
+				</props>
+				<props>
+					<prop key="key">topLogin</prop>
+					<prop key="nickKey">top1</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+
+				<props>
+					<prop key="key">topDomain</prop>
+					<prop key="nickKey">top2</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">true</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+
+				<!-- cang chu yiqi begin jiumu -->
+				<props>
+					<prop key="key">first_use</prop>
+					<prop key="nickKey">_f_u_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">esupply.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">store_user</prop>
+					<prop key="nickKey">_store_u_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">esupply.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">seller_user_id</prop>
+					<prop key="nickKey">_s_u_i_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">esupply.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+
+				<props>
+					<prop key="key">logis_store_user</prop>
+					<prop key="nickKey">_ls_u_i_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">wuliu.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">store_user_id</prop>
+
+					<prop key="nickKey">_s_us_i_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">wuliu.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<props>
+					<prop key="key">logis_user_role</prop>
+					<prop key="nickKey">_l_u_r_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">wuliu.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">services_status</prop>
+					<prop key="nickKey">_s_u_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">wuliu.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">logis_company_id</prop>
+					<prop key="nickKey">_l_c_i_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">wuliu.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">logis_operator_id</prop>
+					<prop key="nickKey">_l_o_i_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="domain">wuliu.daily.taobao.net</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+				<!-- cang chu yiqi end add by jiumu -->
+
+				<!-- mallist add by chonglou -->
+				<props>
+					<prop key="key">sellerId</prop>
+					<prop key="nickKey">s</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">sellerNick</prop>
+					<prop key="nickKey">sn</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">sellerLastVisit</prop>
+					<prop key="nickKey">lv</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">true</prop>
+					<prop key="base64">false</prop>
+				</props>
+
+				<props>
+					<prop key="key">yfid</prop>
+					<prop key="nickKey">_yfid_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+
+				<props>
+					<prop key="key">ymcs</prop>
+					<prop key="nickKey">_ymcs_</prop>
+					<prop key="storeKey">cookie</prop>
+					<prop key="encrypt">false</prop>
+					<prop key="base64">false</prop>
+					<prop key="compressKey">uc1</prop>
+				</props>
+				<!-- mallist end add by chonglou -->
+
+
+			</list>
+		</property>
+	</bean>
+</beans>

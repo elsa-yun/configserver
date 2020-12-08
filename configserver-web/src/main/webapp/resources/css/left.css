@@ -1,0 +1,24 @@
+@charset "utf-8";/* CSS Document */
+.left{width:218px;background:url(../images/left_pannel_bg.gif) repeat-y;height:auto;}
+/* 欢迎 */
+.welcome{width:218px;height:80px;clear:both;background:url(../images/welcome.gif) no-repeat;}
+#ninhao{float:left;height:36px;line-height:18px;margin-top:10px;margin-left:60px;width:auto;color:#ffffff;font-size:12px;font-family:"宋体";}
+.left_center{width:218px;min-height:560px;clear:both;background:url(../images/left_bottom.gif) no-repeat 0 bottom;}
+.left_body{width:218px;min-height:201px;background:url(../images/left_bodybg.gif) repeat-y;}
+.left_bodybot{width:218px;height:6px;background:url(../images/bottom_bg.gif) no-repeat;}
+.firsttd{width:8%;height:24px;text-align:right;line-height:20px;vertical-align:center;padding-bottom:2px;}
+.secondtd{width:92%;height:24px;line-height:20px;vertical-align:center;}
+.left_bot{width:218px;height:291px;background:url(../images/left_bottom.gif);z-index:-1;}
+.left-table01{border:2px solid #B8C9D6}
+.left-table02{margin-top:8px;margin-bottom:8px;font-family:"宋体";font-size:12px;color:#555555;text-decoration:none}
+.left-table03{width:177px;height:27px;margin-left:16px;margin-bottom:2px;font-family:"宋体";font-size:12px;color:#000000;text-decoration:none;background:url(../images/fold.gif) no-repeat;cursor:pointer;}
+a.left-table03:hover{background-image:url(../images/expand.gif)}
+.left-table04{font-family:"宋体";font-size:12px;color:#555555;text-decoration:none;background-image:url(../images/nav03.gif);margin-top:6px}
+.left-font01{font-family:"宋体";font-size:12px;color:#448CCB;text-decoration:none;filter:DropShadow(Color=#FFFFFF,OffX=1,OffY=1)}
+a.left-font01:hover{font-family:"宋体";font-size:12px;color:#FF0000;text-decoration:underline;filter:DropShadow(Color=#FFFFFF,OffX=1,OffY=11,)}
+.left-font02{font-family:Tahoma;font-size:11px;font-weight:bold;color:#448CCB;text-decoration:none;filter:DropShadow(Color=#FFFFFF,OffX=1,OffY=1)}
+.left-font03{padding-left:6px;font-family:"宋体";font-size:12px;color:#000000;text-decoration:none}
+a.left-font03:hover{font-family:"宋体";font-size:12px;color:#FF0000;text-decoration:underline}
+.left_bottom{width:218px;height:256px;margin:-256px 0 0 0;position:absolute;top:100%;background:url(../images/left_bottom.gif) no-repeat}
+.marginbot0{ margin-bottom:0}
+.wdleft{ display:block; width:150px; height:25px; line-height:25px; text-decoration:none; outline:none;}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:loxia="http://loxia.benjamin.cn/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	default-autowire="byName">
+
+	<bean id="cache_pool_config" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="2" /><!-- 连接池中最大实例 数 -->
+		<property name="maxIdle" value="2" /><!-- 连接池中最大闲置实例数 -->
+		<property name="minIdle" value="1" /><!-- 连接池中最小闲置实例数 -->
+		<property name="maxWaitMillis" value="-1" /><!-- 最长等待时间 默认值为-1 
+			单位：毫秒 -->
+	</bean>
+
+	<bean id="redisDO" class="com.elsa.configserver.controller.RedisDO"
+		scope="singleton">
+		<property name="redisCacheAllHosts" value="${redis.cache.all.host}" />
+		<property name="oldRedisHosts" value="${redis.cache.db.oldRedisHosts}" />
+		<property name="newRedisHosts" value="${redis.cache.db.newRedisHosts}" />
+		<property name="timeout" value="${redis.cache.all.timeout}" />
+	</bean>
+<!-- 	<bean id="redisDO" class="com.elsa.configserver.controller.RedisDO"
+		scope="singleton">
+		<property name="host" value="${redis.test.cache.host}" />
+		<property name="port" value="${redis.test.cache.port}" />
+		<property name="timeout" value="${redis.test.cache.timeout}" />
+		<property name="weight" value="${redis.test.cache.weight}" />
+		<property name="size" value="${redis.test.cache.size}" />
+	</bean> -->
+
+	<bean id="cache_jedis_shard_info_0" class="redis.clients.jedis.JedisShardInfo"
+		scope="singleton">
+		<constructor-arg name="host" value="${redis0.cache.host}" />
+		<constructor-arg name="port" value="${redis0.cache.port}"
+			type="int" />
+		<constructor-arg name="timeout" value="${redis0.cache.timeout}"
+			type="int" />
+		<constructor-arg name="weight" value="${redis0.cache.weight}"
+			type="int" />
+	</bean>
+
+	<bean id="cache_jedis_shard_info_1" class="redis.clients.jedis.JedisShardInfo"
+		scope="singleton"><!-- spring bean中不能存在两个cache bean相同的host和port,否则将造成com.elsa.redis.MonitorJedis连接池重载失败 -->
+		<constructor-arg name="host" value="${redis1.cache.host}" />
+		<constructor-arg name="port" value="${redis1.cache.port}"
+			type="int" />
+		<constructor-arg name="timeout" value="${redis1.cache.timeout}"
+			type="int" />
+		<constructor-arg name="weight" value="${redis1.cache.weight}"
+			type="int" />
+	</bean>
+
+	<bean id="cacheShardJedisPool" class="com.elsa.redis.CacheShardedJedisPool"
+		destroy-method="destroy">
+		<constructor-arg name="poolConfig" ref="cache_pool_config"></constructor-arg>
+		<constructor-arg name="shards">
+			<list>
+				<ref bean="cache_jedis_shard_info_0" />
+				<ref bean="cache_jedis_shard_info_1" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="jedisCacheUtil" class="com.elsa.redis.util.JedisCacheUtil"
+		scope="singleton">
+		<property name="cacheShardJedisPool" ref="cacheShardJedisPool"></property>
+		<property name="projectPrefixKey" value="config_lhs"></property>
+	</bean>
+<!-- 	<bean id="monitorJedis" class="com.elsa.redis.MonitorJedis"
+		scope="singleton">
+	</bean> -->
+</beans>

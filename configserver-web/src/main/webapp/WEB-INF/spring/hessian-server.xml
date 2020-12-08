@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 					 http://www.springframework.org/schema/beans/spring-beans.xsd
+ 					 http://www.springframework.org/schema/context
+ 					 http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- 	<bean name="/testHessian.hessian"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">		<property name="service" ref="testHessianImpl" />
+		<property name="serviceInterface" value="com.elsa.configserver.client.TestHessian" />
+	</bean>
+	<bean name="/base.hessian"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">		<property name="service" ref="testHessianImpl" />
+		<property name="serviceInterface" value="com.elsa.configserver.client.Base" />
+	</bean>
+	<bean id="testHessianImpl" class="com.elsa.configserver.client.TestHessianImpl" /> -->
+
+</beans>  
